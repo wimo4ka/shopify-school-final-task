@@ -1,0 +1,30 @@
+@import "tailwindcss" prefix(tw);
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --spacing: 4px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  --text-5xl--line-height: 1;
+
+  --font-display: "Poppins", sans-serif;
+
+  --color-dark: #111111;
+  --color-gray: #737373;
+  --color-lightgray: #CACACB;
+  --color-stroke: #EBEBEB;
+  --color-lightstroke: #F5F5F5;
+}
+
+
+@layer components {
+  
+}

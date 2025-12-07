@@ -1,57 +1,130 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
+{{ 'footer-menu.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'footer.js' | asset_url }}" defer></script>
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-wrapper">
+      <div class="footer-column">
+        <button
+          type="button"
+          class="footer-button"
+          aria-expanded="true"
+          aria-controls="footer-col-resources"
+        >
+          <span class="footer-title">{{ 'footer.resources' | t | default: 'Resources'}}</span>
+          <img
+            src="{{ 'icon-arrow.svg' | asset_url }}"
+            alt=""
+            aria-hidden="true"
+            class="icon"
+            width="15"
+            height="15"
+            aria-hidden="true"
+            loading="lazy"
+          >
+        </button>
+        <ul id="footer-col-resources" class="footer-col-list">
+          {%- for _ in (1..5) -%}
+            <li class="footer-item">
+              <a href="#" class="footer-link">{{ 'footer.lorem' | t | default: 'Lorem ipsum' }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="footer-column">
+        <button
+          type="button"
+          class="footer-button"
+          aria-expanded="true"
+          aria-controls="footer-col-help"
+        >
+          <span class="footer-title">{{ 'footer.help' | t | default: 'Help'}}</span>
+          <img
+            src="{{ 'icon-arrow.svg' | asset_url }}"
+            alt=""
+            aria-hidden="true"
+            class="icon"
+            width="15"
+            height="15"
+            aria-hidden="true"
+            loading="lazy"
+          >
+        </button>
+        <ul id="footer-col-help" class="footer-col-list">
+          {%- for _ in (1..5) -%}
+            <li class="footer-item">
+              <a href="#" class="footer-link">{{ 'footer.lorem' | t | default: 'Lorem ipsum' }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="footer-column">
+        <button
+          type="button"
+          class="footer-button"
+          aria-expanded="true"
+          aria-controls="footer-col-about-company"
+        >
+           <span class="footer-title">{{ 'footer.company' | t | default: 'Company'}}</span>
+          <img
+            src="{{ 'icon-arrow.svg' | asset_url }}"
+            alt=""
+            aria-hidden="true"
+            class="icon"
+            width="15"
+            height="15"
+            aria-hidden="true"
+            loading="lazy"
+          >
+        </button>
+        <ul id="footer-col-about-company" class="footer-col-list">
+          {%- for _ in (1..5) -%}
+            <li class="footer-item">
+              <a href="#" class="footer-link">{{ 'footer.lorem' | t | default: 'Lorem ipsum' }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="footer-column">
+        <button
+          type="button"
+          class="footer-button"
+          aria-expanded="true"
+          aria-controls="footer-col-menu"
+        >
+           <span class="footer-title">{{ 'footer.menu' | t | default: 'Menu'}}</span>
+          
+          <img
+            src="{{ 'icon-arrow.svg' | asset_url }}"
+            alt=""
+            aria-hidden="true"
+            class="icon"
+            width="15"
+            height="15"
+            aria-hidden="true"
+            loading="lazy"
+          >
+        </button>
+        <ul id="footer-col-menu" class="footer-col-list">
+          {%- for _ in (1..5) -%}
+            <li class="footer-item">
+              <a href="#" class="footer-link">{{ 'footer.lorem' | t | default: 'Lorem ipsum' }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+    <div class="nav-title">{{ 'footer.useful_links' | t | default: 'Useful links' }}</div>
+    <nav class="footer-nav" aria-label="{{ 'a11y.footer_nav' | t }}">
+      <a href="{{ routes.account_login_url }}">{{ 'footer.login' | t }}</a>
+      <a href="{{ routes.search_url }}">{{ 'footer.search' | t }}</a>
+      <a href="{{ routes.all_products_collection_url }}">{{ 'footer.shop_all' | t }}</a>
+      <a href="{{ routes.policy_terms_of_service_url }}">{{ 'footer.terms' | t }}</a>
+      <a href="{{ routes.policy_privacy_policy_url }}">{{ 'footer.privacy' | t }}</a>
+    </nav>
+    <small
+      >&copy; {{ 'footer.copyright' | t }}
+      {{ shop.name | escape -}}
+    </small>
   </div>
 </footer>
-
-{% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
-{% schema %}
-{
-  "name": "t:general.footer",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
-    }
-  ]
-}
-{% endschema %}

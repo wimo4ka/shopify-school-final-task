@@ -17,7 +17,32 @@
     "footer": "Footer",
     "group": "Group",
     "header": "Header",
-    "layout": "Layout",
+    "layout": {
+      "name": "Layout",
+      "settings": {
+        "page_width": {
+          "label": "Page width"
+        },
+        "spacing_sections": {
+          "label": "Space between template sections"
+        },
+      }
+    },
+    "logo": {
+      "name": "Logo",
+      "settings": {
+        "logo_image": {
+          "label": "Logo"
+        },
+        "logo_width": {
+          "label": "Width"
+        },
+        "favicon": {
+          "label": "Favicon",
+          "info": "Displayed at 32 x 32px"
+        }
+      }
+    },
     "main": "Main",
     "page": "Page",
     "password": "Password",

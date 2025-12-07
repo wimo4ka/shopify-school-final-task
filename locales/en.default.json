@@ -17,7 +17,8 @@
     "checkout": "Checkout",
     "title": "Cart",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "open_cart": "Open cart"
   },
   "customers": {
     "login": {
@@ -30,12 +31,32 @@
   "collections": {
     "title": "Collections"
   },
+  "footer": {
+    "login": "Login",
+    "search": "Search",
+    "copyright": "2025 Nike, Inc. All rights reserved",
+    "useful_links": "Useful links",
+    "shop_all": "Shop All",
+    "terms": "Terms",
+    "privacy": "Privacy Policy",
+    "icon": "Icon",
+    "lorem": "Lorem ipsum",
+    "resources": "Resources",
+    "help": "Help",
+    "company": "Company",
+    "menu": "Menu"
+  },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
     "card": "Gift card",
     "expired": "This gift card has expired",
     "expires_on": "Expires on {{ expires_on }}",
     "use_at_checkout": "Use this gift card at checkout"
+  },
+  "header": {
+    "site_header": "Website header",
+    "main_navigation": "Main navigation",
+    "open_menu": "Open menu"
   },
   "password": {
     "title": "This shop is private",
@@ -48,5 +69,5 @@
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
-  }
+  },
 }
