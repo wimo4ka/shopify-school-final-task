@@ -3,7 +3,6 @@
 /* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
 * {
   box-sizing: border-box;
-  margin: 0;
 }
 
 body {
@@ -17,13 +16,17 @@ html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {
   overflow: hidden;
 }
 
-img,
 picture,
 video,
 canvas,
 svg {
   display: block;
   max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
   height: auto;
 }
 
