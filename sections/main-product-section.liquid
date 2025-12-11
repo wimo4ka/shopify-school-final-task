@@ -1,0 +1,108 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.66 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.66 | round: 0 }}px;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="main-product section-{{ section.id }} section-{{ section.id }}-padding tw:w-full"
+  title="{{section.name | escape}}"
+>
+  <div class="container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'product-link' %}
+          <div class="tw:lg:col-span-2">
+            {% render 'product-link', product: product %}
+          </div>
+        {% when 'product-gallery' %}
+          {% render 'product-gallery', product: product, min_rating: block.settings.min_high_raiting %}
+        {% when 'product-title' %}
+          {% if product.title != blank %}
+            <h2 class="tw:text-dark tw:text-2xl tw:lg:text-3xl">
+              {{- product.title -}}
+            </h2>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main-product-section.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.general.padding.padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.general.padding.padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product-link",
+      "name": "t:sections.main-product-section.blocks.product-link.name",
+      "limit": 1
+    },
+    {
+      "type": "product-gallery",
+      "name": "t:sections.main-product-section.blocks.product-gallery.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "min_high_raiting",
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "label": "t:sections.main-product-section.blocks.product-gallery.settings.min_high_raiting.label",
+          "default": 3.5
+        }
+      ]
+    },
+    {
+      "type": "product-title",
+      "name": "t:sections.main-product-section.blocks.product-title.name",
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main product section"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  console.log({{ collections.all.products | json }}, {{ section.blocks }});
+</script>

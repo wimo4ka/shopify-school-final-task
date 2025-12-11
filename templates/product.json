@@ -10,8 +10,27 @@
 {
   "sections": {
     "main": {
-      "type": "product",
-      "settings": {}
+      "type": "main-product-section",
+      "settings": {},
+      "blocks": {
+        "product_link": {
+          "type": "product-link",
+          "settings": {}
+        },
+        "product-gallery": {
+          "type": "product-gallery",
+          "settings": {}
+        },
+        "product-title": {
+          "type": "product-title",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "product_link",
+        "product-gallery",
+        "product-title"
+      ],
     }
   },
   "order": [
