@@ -1,0 +1,11 @@
+{%- comment -%}
+  snippets/rating-bage.liquid
+  Usage:
+    {%- render 'rating-bage' -%}
+{%- endcomment -%}
+<div class="tw:absolute tw:bg-white tw:rounded-sm tw:p-2 tw:text-dark tw:text-sm tw:flex tw:items-center tw:place-content-between tw:w-32 tw:h-9 tw:top-4 tw:left-4 tw:z-10">
+  <div class="tw:w-2 tw:h-2">
+    {{- 'star.svg' | inline_asset_content }}
+  </div>
+  <p>{{ 'main-product-section.bage.high_rating' | t }}</p>
+</div>
