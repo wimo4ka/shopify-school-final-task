@@ -1,0 +1,20 @@
+{% comment %}
+  Renders link
+
+  Usage:
+  {% render 'product-link',
+    product: product
+  %}
+{% endcomment %}
+{% assign first_link = linklists['main-menu'].links | first %}
+
+<div title="{{first_link.title | escape}}" class="tw:text-sm tw:mb-4">
+    <a href="{{ first_link.url }}" class="tw:text-gray">
+      {{- first_link.title -}}
+    </a> 
+    <span class="tw:text-dark"> / {{ product.title -}}</span>
+</div>
+
+<script>
+  console.log({{ linklists['main-menu'].links | json }});
+</script>
