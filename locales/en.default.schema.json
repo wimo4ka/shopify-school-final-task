@@ -44,6 +44,11 @@
       }
     },
     "main": "Main",
+    "padding": {
+        "section_padding_heading": "Padding",
+        "padding_top": "Top",
+        "padding_bottom": "Bottom"
+      },
     "page": "Page",
     "password": "Password",
     "primary": "Primary",
@@ -97,5 +102,26 @@
       "subtitle": "Subtitle",
       "normal": "Normal text"
     },
+  },
+  "sections": {
+    "main-product-section": {
+      "name": "Main product",
+      "blocks": {
+        "product-link": {
+          "name": "Product link"
+        },
+        "product-gallery": {
+          "name": "Product gallery",
+          "product-gallery": {
+            "min_high_raiting": {
+              "label": "Minimum level rating bage to show"
+            }
+          }
+        },
+        "product-title": {
+          "name": "Product title"
+        }
+      }
+    }
   }
 }

@@ -70,4 +70,10 @@
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
   },
+  "main-product-section":{
+    "bage":{
+      "high_rating": "Highly Rated"
+    },
+    "title": "Highly Rated"
+  }
 }
