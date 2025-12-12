@@ -24,12 +24,22 @@
         "product-title": {
           "type": "product-title",
           "settings": {}
+        },
+        "star-rating": {
+          "type": "star-rating",
+          "settings": {}
+        },
+        "product-decription": {
+          "type": "product-decription",
+          "settings": {}
         }
       },
       "block_order": [
         "product_link",
         "product-gallery",
-        "product-title"
+        "product-title",
+        "star-rating",
+        "product-decription"
       ],
     }
   },

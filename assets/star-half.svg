@@ -1,0 +1,22 @@
+<svg width="11" height="11" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg">
+
+  <mask id="half-mask">
+    <rect x="0" y="0" width="5.5" height="11" fill="white"/>
+  </mask>
+
+
+  <path 
+    d="M5.33341 8.40555L2.44911 10L3.00008 6.62291L0.666748 4.23147L3.89126 3.73913L5.33341 0.666672L6.77557 3.73913L10.0001 4.23147L7.66675 6.62291L8.21772 10L5.33341 8.40555Z"
+    fill="currentColor"
+    mask="url(#half-mask)"
+  />
+
+  <path 
+    d="M5.33341 8.40555L2.44911 10L3.00008 6.62291L0.666748 4.23147L3.89126 3.73913L5.33341 0.666672L6.77557 3.73913L10.0001 4.23147L7.66675 6.62291L8.21772 10L5.33341 8.40555Z"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.33333"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

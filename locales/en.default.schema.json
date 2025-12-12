@@ -120,6 +120,12 @@
         },
         "product-title": {
           "name": "Product title"
+        },
+        "star-rating": {
+          "name": "Star rating"
+        },
+        "product-decription": {
+          "name": "Product decription"
         }
       }
     }

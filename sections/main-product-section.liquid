@@ -17,7 +17,7 @@
   class="main-product section-{{ section.id }} section-{{ section.id }}-padding tw:w-full"
   title="{{section.name | escape}}"
 >
-  <div class="container">
+  <div class="container tw:lg:grid tw:lg:grid-cols-[2.6fr_1fr] tw:mlg:grid-cols-[1.8fr_1fr] tw:xl:grid-cols-[1.3fr_1fr] tw:lg:gap-x-2 tw:xl:gap-x-15">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'product-link' %}
@@ -25,13 +25,27 @@
             {% render 'product-link', product: product %}
           </div>
         {% when 'product-gallery' %}
-          {% render 'product-gallery', product: product, min_rating: block.settings.min_high_raiting %}
+          <div class="tw:lg:row-span-10">
+            {% render 'product-gallery', product: product, min_rating: block.settings.min_high_raiting %}
+          </div>
         {% when 'product-title' %}
           {% if product.title != blank %}
-            <h2 class="tw:text-dark tw:text-2xl tw:lg:text-3xl">
-              {{- product.title -}}
-            </h2>
+            <div class="tw:m-auto tw:max-w-146 tw:lg:m-0">
+              <h2 class="tw:text-dark tw:text-2xl tw:mt-6 tw:lg:text-3xl tw:lg:m-0">
+                {{- product.title -}}
+              </h2>
+            </div>
           {% endif %}
+        {% when 'star-rating' %}
+          {% render 'star-rating', product: product %}
+        {% when 'product-decription' %}
+          {%- if product.description != blank -%}
+            <div class="tw:m-auto tw:max-w-146 tw:lg:m-0">
+              <div class="tw:text-gray tw:text-sm tw:mt-3">
+                {{- product.description | strip -}}
+              </div>
+            </div>
+          {%- endif -%}
       {% endcase %}
     {% endfor %}
   </div>
@@ -92,6 +106,16 @@
     {
       "type": "product-title",
       "name": "t:sections.main-product-section.blocks.product-title.name",
+      "limit": 1
+    },
+    {
+      "type": "star-rating",
+      "name": "t:sections.main-product-section.blocks.star-rating.name",
+      "limit": 1
+    },
+    {
+      "type": "product-decription",
+      "name": "t:sections.main-product-section.blocks.product-decription.name",
       "limit": 1
     }
   ],

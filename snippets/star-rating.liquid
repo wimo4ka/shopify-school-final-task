@@ -1,0 +1,35 @@
+{%- comment -%}
+  snippets/star-rating.liquid
+  Usage:
+    {%- render 'star-rating', product: product, -%}
+{%- endcomment -%}
+
+{%- assign rating_object = product.metafields.custom.rating -%}
+{%- assign rating_clean = rating_object.value | replace: ',', '.' | strip -%}
+{%- assign product_rating = rating_clean | plus: 0 | default: 3.0 -%}
+{%- assign rating_max_clean = product.metafields.custom.rating.scale_max | replace: ',', '.' | strip -%}
+{% assign product_rating_max = rating_max_clean | plus: 0 | default: 5.0 -%}
+
+{%- if product_rating != blank -%}
+    <div class="tw:m-auto tw:max-w-146 tw:flex tw:items-center tw:gap-1 tw:mt-2 tw:lg:mb-0 tw:lg:ml-0 tw:lg:mr-0">
+        <div>
+            {% for i in (1..5) %}
+            {% assign prev_i = i | minus: 1 %}
+            {% if product_rating >= i %}
+                <span class="tw:text-dark tw:inline-block tw:w-2 tw:h-2">
+                {{ 'star.svg' | inline_asset_content }}
+                </span>
+            {% elsif product_rating >= prev_i and product_rating < i %}
+                <span class="tw:text-dark tw:inline-block tw:w-2 tw:h-2">
+                {{ 'star-half.svg' | inline_asset_content }}
+                </span>
+            {% else %}
+                <span class="tw:text-dark tw:opacity-50 tw:inline-block tw:w-2 tw:h-2">
+                {{ 'star-empty.svg' | inline_asset_content }}
+                </span>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="tw:text-dark tw:text-sm">{{ product_rating }}</div>
+    </div>
+{%- endif -%}

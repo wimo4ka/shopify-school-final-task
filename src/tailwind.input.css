@@ -22,6 +22,8 @@
   --color-lightgray: #CACACB;
   --color-stroke: #EBEBEB;
   --color-lightstroke: #F5F5F5;
+
+  --breakpoint-mlg: 70rem;
 }
 
 
