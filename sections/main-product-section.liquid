@@ -52,14 +52,11 @@
             {%- render 'product-price', product: product, use_variant: true, show_badges: block.settings.show_bages -%}
           </div>
         {% when 'color-picker' %}
-          <color-picker
-            role="radiogroup"
-            aria-live="polite"
-            aria-atomic="true"
+          <div
             class="tw:block tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-0"
           >
             {%- render 'color-picker', product: product -%}
-          </color-picker>
+          </div>
         {% when 'size-option' %}
           <div
             class="tw:block tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-0"
