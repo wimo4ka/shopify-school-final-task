@@ -8,7 +8,7 @@
 {%- assign rating_clean = rating_object.value | replace: ',', '.' | strip -%}
 {%- assign product_rating = rating_clean | plus: 0 | default: 3.0 -%}
 {%- assign rating_max_clean = product.metafields.custom.rating.scale_max | replace: ',', '.' | strip -%}
-{% assign product_rating_max = rating_max_clean | plus: 0 | default: 5.0 -%}
+{%- assign product_rating_max = rating_max_clean | plus: 0 | default: 5.0 -%}
 
 {%- if product_rating != blank -%}
     <div class="tw:m-auto tw:max-w-146 tw:flex tw:items-center tw:gap-1 tw:mt-2 tw:lg:mb-0 tw:lg:ml-0 tw:lg:mr-0">
