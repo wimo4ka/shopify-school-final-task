@@ -20,7 +20,7 @@
     {% endif %}
   {% endfor %}
 {%- endif -%}
-<div class="tw:flex tw:flex-col">
+<size-select role="radiogroup" class="tw:flex tw:flex-col">
   {%- if has_size_option -%}
     <div class="tw:flex tw:justify-between">
       <p
@@ -68,6 +68,6 @@
       {{ 'main-product-section.size-option.one_size' | t | default: 'ONE SIZE' }}
     </p>
   {%- endif -%}
-</div>
+</size-select>
 
 <script>console.log({{ product.variants | json }})</script>

@@ -1,88 +1,102 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const section = document.querySelector(".product-gallery-section");
-    const thumbsEl = section.querySelector(".thumbs-swiper");
-    const mainEl = section.querySelector(".main-swiper");
-    if (!thumbsEl || !mainEl) return;
 
-    const thumbsSwiper = new Swiper(thumbsEl, {
-        direction: "horizontal",
-        spaceBetween: 16,
-        slidesPerView: 3.5,
-        watchSlidesProgress: true,
-        slideToClickedSlide: true,
-        freeMode: true,
-        breakpoints: {
+class ProductGallery extends HTMLElement {
+  connectedCallback() {
+    this.init();
+  }
+
+  disconnectedCallback() {
+    this.destroy();
+  }
+
+  init() {
+    this.thumbsEl = this.querySelector(".thumbs-swiper");
+    this.mainEl = this.querySelector(".main-swiper");
+
+    if (!this.thumbsEl || !this.mainEl) return;
+
+    // Safety: destroy if re-init
+    this.destroy();
+
+    this.thumbsSwiper = new Swiper(this.thumbsEl, {
+      direction: "horizontal",
+      spaceBetween: 16,
+      slidesPerView: 3.5,
+      watchSlidesProgress: true,
+      slideToClickedSlide: true,
+      freeMode: true,
+      breakpoints: {
         768: {
-            direction: "horizontal",
-            slidesPerView: 5,
-            spaceBetween: 24,
-        },  
+          slidesPerView: 5,
+          spaceBetween: 24,
+        },
         1024: {
-            direction: "vertical",
-            slidesPerView: 5,
-            spaceBetween: 24,
-            },
+          direction: "vertical",
+          slidesPerView: 5,
+          spaceBetween: 24,
         },
-});
-
-    const mainSwiper = new Swiper(mainEl, {
-        spaceBetween: 0,
-        allowTouchMove: false,
-        navigation: {
-          nextEl: mainEl.querySelector(".swiper-button-next"),
-          prevEl: mainEl.querySelector(".swiper-button-prev"),
-        },
-        thumbs: {
-          swiper: thumbsSwiper,
-        },
+      },
     });
 
-    // Add accessibility to thumbs ---
-  function initThumbsAccessibility() {
-    const thumbButtons = section.querySelectorAll(
-      ".thumbs-swiper  .swiper-wrapper .swiper-slide button"
-    );
-    if (!thumbButtons.length) return;
+    this.mainSwiper = new Swiper(this.mainEl, {
+      allowTouchMove: false,
+      navigation: {
+        nextEl: this.mainEl.querySelector(".swiper-button-next"),
+        prevEl: this.mainEl.querySelector(".swiper-button-prev"),
+      },
+      thumbs: {
+        swiper: this.thumbsSwiper,
+      },
+    });
 
-    thumbButtons.forEach((btn, index) => {
-      // Start state
+    this.initThumbsAccessibility();
+  }
+
+  destroy() {
+    this.thumbsSwiper?.destroy(true, true);
+    this.mainSwiper?.destroy(true, true);
+  }
+
+  initThumbsAccessibility() {
+    const buttons = this.querySelectorAll(
+      ".thumbs-swiper .swiper-slide button"
+    );
+
+    buttons.forEach((btn, index) => {
       btn.setAttribute("aria-pressed", index === 0 ? "true" : "false");
       btn.setAttribute("tabindex", index === 0 ? "0" : "-1");
 
-      // Click
       btn.addEventListener("click", () => {
-        updateThumbsAria(thumbButtons, btn);
+        this.updateAria(buttons, btn);
       });
 
-      // Keyboard
       btn.addEventListener("keydown", (e) => {
-        let newIndex = index;
+        let next = index;
 
-        if (e.key === "ArrowRight" || e.key === "ArrowDown") newIndex++;
-        if (e.key === "ArrowLeft" || e.key === "ArrowUp") newIndex--;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next++;
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") next--;
 
-        if (newIndex < 0) newIndex = thumbButtons.length - 1;
-        if (newIndex >= thumbButtons.length) newIndex = 0;
+        if (next < 0) next = buttons.length - 1;
+        if (next >= buttons.length) next = 0;
 
-        if (e.key === " " || e.key === "Enter") {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           btn.click();
         }
 
-        if (newIndex !== index) {
-          thumbButtons[newIndex].focus();
-        }
+        buttons[next]?.focus();
       });
     });
   }
 
-  // --- Update aria-pressed for thumbs ---
-  function updateThumbsAria(buttons, activeBtn) {
+  updateAria(buttons, active) {
     buttons.forEach((btn) => {
-      btn.setAttribute("aria-pressed", btn === activeBtn ? "true" : "false");
-      btn.setAttribute("tabindex", btn === activeBtn ? "0" : "-1");
+      const isActive = btn === active;
+      btn.setAttribute("aria-pressed", isActive);
+      btn.setAttribute("tabindex", isActive ? "0" : "-1");
     });
   }
+}
 
-  initThumbsAccessibility();
-});
+customElements.define("product-gallery", ProductGallery);
+
+
