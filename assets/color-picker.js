@@ -30,7 +30,6 @@ class ColorPicker extends HTMLElement {
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = html;
             const newSection = tempDiv.querySelector(".main-product-section .container");
-            console.log(newSection)
             this.content.innerHTML = "";
             if (newSection) this.content.appendChild(newSection);
 
