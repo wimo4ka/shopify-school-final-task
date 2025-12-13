@@ -82,7 +82,9 @@
       "one_color": "ONE COLOR"
     },
     "size-option": {
-      "one_size": "ONE SIZE"
+      "one_size": "ONE SIZE",
+      "select_size": "Select Size",
+      "size_guide": "Size Guide"
     }
   }
 }

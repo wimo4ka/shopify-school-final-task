@@ -48,17 +48,22 @@
             </div>
           {%- endif -%}
         {% when 'product-price' %}
-          <div role="status" class="tw:mt-6">
+          <div role="status" class="tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-0">
             {%- render 'product-price', product: product, use_variant: true, show_badges: block.settings.show_bages, -%}
           </div>
         {% when 'color-picker' %}
-          <color-picker role="radiogroup" aria-live="polite" aria-atomic="true" class="tw:mt-6 tw:block">
+          <color-picker role="radiogroup" aria-live="polite" aria-atomic="true" class="tw:block tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-0">
             {%- render 'color-picker', product: product -%}
         </color-picker>
+        {% when 'size-option' %}
+          <size-select role="radiogroup" class="tw:block tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-0">
+            {%- render 'size-select', product: product -%}
+          </size-select>
       {% endcase %}
     {% endfor %}
   </div>
   <script src="{{ 'color-picker.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'size-select.js' | asset_url }}" defer="defer"></script>
 </section>
 
 {% schema %}
@@ -144,6 +149,11 @@
     {
       "type": "color-picker",
       "name": "t:sections.main-product-section.blocks.color-picker.name",
+      "limit": 1
+    },
+    {
+      "type": "size-option",
+      "name": "t:sections.main-product-section.blocks.size-option.name",
       "limit": 1
     },
   ],

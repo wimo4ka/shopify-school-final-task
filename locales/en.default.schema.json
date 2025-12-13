@@ -137,6 +137,9 @@
         },
         "color-picker": {
           "name": "Product colors",
+        },
+        "size-option": {
+          "name": "Size",
         }
       }
     }

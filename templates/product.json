@@ -40,6 +40,10 @@
         "color-picker": {
           "type": "color-picker",
           "settings": {}
+        },
+        "size-option": {
+          "type": "size-option",
+          "settings": {}
         }
       },
       "block_order": [
@@ -49,7 +53,8 @@
         "star-rating",
         "product-decription",
         "product-price",
-        "color-picker"
+        "color-picker",
+        "size-option"
       ],
     }
   },

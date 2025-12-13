@@ -1,0 +1,73 @@
+{% comment %}
+  snippets/size-option.liquid
+  Usage:
+  {% render 'size-option', product: product %}
+{% endcomment %}
+
+{% liquid 
+    assign has_size_option = false 
+    assign product_options_values = product.options_with_values 
+    assign product_url = product.url 
+%}
+
+{%- if product_options_values != blank -%}
+  {% for option in product_options_values %}
+    {% assign option_name = option.name | downcase %}
+    {% if option_name != blank and option_name == 'shoe size' or 'size' %}
+      {% assign has_size_option = true %}
+      {% assign size_option_values = option.values %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{%- endif -%}
+<div class="tw:flex tw:flex-col">
+  {%- if has_size_option -%}
+    <div class="tw:flex tw:justify-between">
+      <p
+        id="size-group-label"
+        class="tw:text-base tw:text-dark"
+      >
+        {{- 'main-product-section.size-option.select_size' | t | default: 'Select Size' -}}
+      </p>
+
+      <button
+        type="button"
+        class="tw:text-base tw:text-dark tw:underline tw:cursor-pointer"
+        aria-haspopup="dialog"
+        aria-controls="size-guide-dialog"
+        data-variant="{{variant}}"
+      >
+        {{- 'main-product-section.size-option.size_guide' | t | default: 'Size Guide' -}}
+      </button>
+    </div>
+    <div
+      role="radiogroup"
+      aria-labelledby="size-group-label"
+      class="tw:mt-3 tw:grid tw:gap-2 tw:grid-cols-2 tw:lg:grid-cols-3"
+    >
+        {% for size_value in size_option_values %}
+            {% assign variant = product.variants | where: 'option1', size_value | first %}
+            <button
+                role="radio"
+                aria-checked="{% if variant.id == product.selected_or_first_available_variant.id %}true{% else %}false{% endif %}"
+                aria-label="Size {{ size_value }}"
+                aria-disabled="{% if variant.avaliable %}false{% else %}true{% endif %}"
+                tabindex="{% if variant.id == product.selected_or_first_available_variant.id %}0{% else %}-1{% endif %}"
+                type="button"
+                class="size-button tw:bg-white tw:border tw:rounded-xl tw:text-sm tw:text-dark tw:p-4 {% if variant.id == product.selected_or_first_available_variant.id and variant.available %}tw:border-dark{% else %} tw:border-stroke {% endif %} {% if variant.available == false %}tw:line-through tw:opacity-50{% endif %}"
+                {% if variant.available == false %}disabled{% endif %}
+                data-url="{{ product_url }}"
+                data-variant-id="{{ variant.id}}"
+            >
+                {{ size_value }}
+          </button>
+        {% endfor %}
+    </div>
+  {%- else -%}
+    <p class="tw:text-base tw:text-dark">
+      {{ 'main-product-section.size-option.one_size' | t | default: 'ONE SIZE' }}
+    </p>
+  {%- endif -%}
+</div>
+
+<script>console.log({{ product.variants | json }})</script>
