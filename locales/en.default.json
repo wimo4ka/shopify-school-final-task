@@ -77,6 +77,12 @@
     "price": {
       "sold_out": "Sold out",
       "on_sale": "On Sale"
+    },
+    "color-picker": {
+      "one_color": "ONE COLOR"
+    },
+    "size-option": {
+      "one_size": "ONE SIZE"
     }
   }
 }
