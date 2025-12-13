@@ -14,8 +14,9 @@
 {%- endstyle -%}
 
 <section
-  class="main-product section-{{ section.id }} section-{{ section.id }}-padding tw:w-full"
-  title="{{section.name | escape}}"
+  class="main-product-section section-{{ section.id }} section-{{ section.id }}-padding tw:w-full"
+  id="mainProduct"
+  data-section-id="{{ section.id }}"
 >
   <div class="container tw:lg:grid tw:lg:grid-cols-[2.6fr_1fr] tw:mlg:grid-cols-[1.8fr_1fr] tw:xl:grid-cols-[1.3fr_1fr] tw:lg:gap-x-2 tw:xl:gap-x-15">
     {% for block in section.blocks %}
@@ -46,9 +47,18 @@
               </div>
             </div>
           {%- endif -%}
+        {% when 'product-price' %}
+          <div role="status" class="tw:mt-6">
+            {%- render 'product-price', product: product, use_variant: true, show_badges: block.settings.show_bages, -%}
+          </div>
+        {% when 'color-picker' %}
+          <color-picker role="radiogroup" aria-live="polite" aria-atomic="true" class="tw:mt-6 tw:block">
+            {%- render 'color-picker', product: product -%}
+        </color-picker>
       {% endcase %}
     {% endfor %}
   </div>
+  <script src="{{ 'color-picker.js' | asset_url }}" defer="defer"></script>
 </section>
 
 {% schema %}
@@ -85,7 +95,7 @@
     {
       "type": "product-link",
       "name": "t:sections.main-product-section.blocks.product-link.name",
-      "limit": 1
+      "limit": 1,
     },
     {
       "type": "product-gallery",
@@ -117,7 +127,25 @@
       "type": "product-decription",
       "name": "t:sections.main-product-section.blocks.product-decription.name",
       "limit": 1
-    }
+    },
+    {
+      "type": "product-price",
+      "name": "t:sections.main-product-section.blocks.product-price.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_bages",
+          "label": "t:sections.main-product-section.blocks.product-gallery.settings.show_bages.label",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "color-picker",
+      "name": "t:sections.main-product-section.blocks.color-picker.name",
+      "limit": 1
+    },
   ],
   "presets": [
     {
@@ -126,7 +154,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-  console.log({{ collections.all.products | json }}, {{ section.blocks }});
-</script>

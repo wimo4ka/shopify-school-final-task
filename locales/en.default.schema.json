@@ -112,9 +112,9 @@
         },
         "product-gallery": {
           "name": "Product gallery",
-          "product-gallery": {
+          "settings": {
             "min_high_raiting": {
-              "label": "Minimum level rating bage to show"
+              "label": "Minimum level rating to show bage"
             }
           }
         },
@@ -126,6 +126,17 @@
         },
         "product-decription": {
           "name": "Product decription"
+        },
+        "product-price": {
+          "name": "Product price",
+          "settings": {
+            "show_bages": {
+              "label": "Show price bages"
+            }
+          }
+        },
+        "color-picker": {
+          "name": "Product colors",
         }
       }
     }

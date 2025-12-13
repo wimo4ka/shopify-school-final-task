@@ -32,6 +32,14 @@
         "product-decription": {
           "type": "product-decription",
           "settings": {}
+        },
+        "product-price": {
+          "type": "product-price",
+          "settings": {}
+        },
+        "color-picker": {
+          "type": "color-picker",
+          "settings": {}
         }
       },
       "block_order": [
@@ -39,7 +47,9 @@
         "product-gallery",
         "product-title",
         "star-rating",
-        "product-decription"
+        "product-decription",
+        "product-price",
+        "color-picker"
       ],
     }
   },

@@ -74,6 +74,9 @@
     "bage":{
       "high_rating": "Highly Rated"
     },
-    "title": "Highly Rated"
+    "price": {
+      "sold_out": "Sold out",
+      "on_sale": "On Sale"
+    }
   }
 }
