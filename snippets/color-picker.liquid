@@ -24,7 +24,7 @@
           aria-checked="{%- if product.handle == target_product.handle -%}true{%- else -%}false{%- endif -%}"
           tabindex="{%- if product.handle == target_product.handle -%}0{%- else -%}-1{%- endif -%}"
           type="button"
-          class="color-button tw:w-22 tw:h-22 tw:mr-2 tw:rounded-xl tw:overflow-hidden {% if product.handle == target_product.handle %}tw:border tw:border-dark {% endif %}"
+          class="color-button tw:w-22 tw:h-22 tw:cursor-pointer tw:mr-2 tw:rounded-xl tw:overflow-hidden {% if product.handle == target_product.handle %}tw:border tw:border-dark {% endif %}"
         >
           {{ product.featured_image | image_url: width: 100 | image_tag: alt: product_color, class: 'tw:w-full tw:object-cover tw:aspect-square' }}
         </button>
