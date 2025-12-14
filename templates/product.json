@@ -89,10 +89,15 @@
         "product-notes",
         "returns-policy"
       ]
+    },
+    "recommendation-carousel": {
+      "type": "recommendation-carousel",
+      "settings": {},
     }
   },
   "order": [
     "main",
-    "accordion"
+    "accordion",
+    "recommendation-carousel"
   ]
 }

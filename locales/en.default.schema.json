@@ -209,6 +209,19 @@
         }
       },
       "presets": "Main product section"
+    },
+    "recommendations-carousel": {
+      "name": "Recommended products",
+      "settings": {
+        "heading": {
+          "label": "Section heading",
+          "default": "You may also like"
+        },
+        "products_to_show": {
+          "label": "Products to show"
+        }
+      },
+      "presets": "Recommended products"
     }
   }
 }

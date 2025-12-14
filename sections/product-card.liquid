@@ -1,0 +1,34 @@
+{%- comment -%}
+  snippets/product-card.liquid
+  Usage:
+    {%- render 'product-card', product: product, show_price: true, show_add_to_cart: true -%}
+{%- endcomment -%}
+<div
+  class="product-card tw:flex tw:flex-col"
+  data-product-id="{{ product.id }}"
+  data-price="{{ product.price }}"
+  data-title="{{ product.title | escape }}"
+>
+  <a href="{{ product.url  }}" aria-label="{{ 'accessibility.view_product' | t | default: 'View product' }} {{ product.title | escape }}">
+    {%- if product.featured_image != blank -%}
+      {{
+        product.featured_image
+        | image_url: width: 312
+        | image_tag:
+          alt: product.title,
+          loading: 'lazy',
+          class: 'tw:w-full tw:object-cover tw:aspect-square tw:rounded-lg tw:mb-4'
+      }}
+    {%- else -%}
+      {{ 'no-image.svg' | inline_asset_content }}
+    {%- endif -%}
+    <p class="tw:text-base tw:text-dark tw:mt-0 tw:mb-2">
+      {{- product.title | default: 'Product title' | escape -}}
+    </p>
+  </a>
+  {%- if show_price -%}
+    <p class="product-price tw:text-gray tw:text-base">
+      {{ product.price | money }}
+    </p>
+  {%- endif -%}
+</div>
