@@ -1,6 +1,15 @@
 
 class ProductGallery extends HTMLElement {
+  constructor() {
+    super();
+  }
+
   connectedCallback() {
+    this.thumbsEl = this.querySelector(".thumbs-swiper");
+    this.mainEl = this.querySelector(".main-swiper");
+    this.init = this.init.bind(this);
+    this.initThumbsAccessibility = this.initThumbsAccessibility.bind(this);
+    this.updateAria = this.updateAria.bind(this);
     this.init();
   }
 
@@ -9,9 +18,6 @@ class ProductGallery extends HTMLElement {
   }
 
   init() {
-    this.thumbsEl = this.querySelector(".thumbs-swiper");
-    this.mainEl = this.querySelector(".main-swiper");
-
     if (!this.thumbsEl || !this.mainEl) return;
 
     this.destroy();
