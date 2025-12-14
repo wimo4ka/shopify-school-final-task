@@ -48,6 +48,10 @@
         "buy_button": {
           "type": "buy_button",
           "settings": {}
+        },
+        "checkout_details": {
+          "type": "checkout_details",
+          "settings": {}
         }
       },
       "block_order": [
@@ -59,7 +63,8 @@
         "product-price",
         "color-picker",
         "size-option",
-        "buy_button"
+        "buy_button",
+        "checkout_details"
       ],
     }
   },
