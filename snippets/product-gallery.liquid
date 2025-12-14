@@ -15,6 +15,9 @@
 >
   {%- if product.images.size == 1 -%}
     <div class="tw:relative tw:m-auto tw:w-fit">
+      {% if product_rating != blank and product_rating > min_rating %}
+        {%- render 'rating-bage' -%}
+      {% endif %}
       {% if product.featured_image != blank %}
         {{
           product.featured_image
@@ -33,9 +36,6 @@
             alt: product.title,
             class: 'main-image tw:w-full tw:object-cover tw:aspect-square tw:m-auto tw:max-w-146 tw:rounded-lg'
         }}
-      {% endif %}
-      {% if product_rating != blank and product_rating > min_rating %}
-        {%- render rating-bage -%}
       {% endif %}
     </div>
   {%- else -%}
