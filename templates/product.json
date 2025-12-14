@@ -66,9 +66,33 @@
         "buy_button",
         "checkout_details"
       ],
+    },
+    "accordion": {
+      "type": "accordion",
+      "settings": {},
+      "blocks": {
+        "size-and-fit": {
+          "type": "size-and-fit",
+          "settings": {}
+        },
+        "product-notes": {
+          "type": "product-notes",
+          "settings": {}
+        },
+        "returns-policy": {
+          "type": "returns-policy",
+          "settings": {}
+        },
+      },
+      "block_order": [
+        "size-and-fit",
+        "product-notes",
+        "returns-policy"
+      ]
     }
   },
   "order": [
-    "main"
+    "main",
+    "accordion"
   ]
 }
