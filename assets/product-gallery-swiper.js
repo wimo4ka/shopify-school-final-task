@@ -14,7 +14,6 @@ class ProductGallery extends HTMLElement {
 
     if (!this.thumbsEl || !this.mainEl) return;
 
-    // Safety: destroy if re-init
     this.destroy();
 
     this.thumbsSwiper = new Swiper(this.thumbsEl, {

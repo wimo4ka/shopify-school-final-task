@@ -1,0 +1,77 @@
+{% comment %}
+  Renders Size info popup
+
+  Usage:
+  {% render 'size-popup' %}
+{% endcomment %}
+
+<size-popup
+  class="size-popup tw:fixed tw:top-0 tw:left-0 tw:w-full tw:h-full tw:bg-dark/80 tw:z-999 tw:invisible tw:opacity-0 tw:transition tw:content-visibility tw:delay-0 tw:duration-300 tw:transition-opacity tw:ease-in-out tw:[&[open]]:visible tw:[&[open]]:opacity-100"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="size-popup-title"
+  aria-describedby="size-popup-content"
+>
+  <div
+    class="size-popup__overlay tw:absolute tw:top-0 tw:left-0 tw:w-full tw:h-full"
+    data-close
+    aria-hidden="true"
+  ></div>
+  <div
+    class="size-popup__inner tw:absolute tw:top-1/2 tw:left-1/2 tw:bg-white tw:w-86 tw:h-64 tw:-translate-x-1/2 tw:-translate-y-1/2 tw:px-4 tw:py-8 tw:lg:w-161 tw:lg:h-76 tw:lg:p-12"
+    role="document"
+  >
+    <button
+      data-close
+      class="button tw:w-4 tw:h-4 tw:text-dark tw:absolute tw:z-999 tw:top-2 tw:right-2 tw:lg:top-4 tw:lg:right-6"
+      aria-label="{{ 'accessibility.close_dialog' | t | default: 'Close size guide' }}"
+    >
+      {{ 'icon-close.svg' | inline_asset_content }}
+    </button>
+    <div class="size-popup__content tw:overflow-x-auto">
+      <table class="tw:w-full tw:border-collapse tw:text-sm tw:text-dark tw:text-center tw:font-normal tw:m-auto">
+        <tbody>
+          <tr>
+            <th scope="row" class="tw:px-2 tw:pt-2 tw:pb-6 tw:font-normal">
+              {{ 'main-product-section.size-option.men' | t: default: "US – Men's" }}
+            </th>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6 tw:bg-lightstroke">3.5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6">4</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6 tw:bg-lightstroke">4.5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6">5</td>
+          </tr>
+
+          <tr>
+            <th scope="row" class="tw:px-2 tw:pt-2 tw:pb-6 tw:font-normal">
+              {{ 'main-product-section.size-option.women' | t: default: "US – Women's" }}
+            </th>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6 tw:bg-lightstroke">5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6">5.5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6 tw:bg-lightstroke">6</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6">6.5</td>
+          </tr>
+
+          <tr>
+            <th scope="row" class="tw:px-2 tw:pt-2 tw:pb-6 tw:font-normal">
+              {{ 'main-product-section.size-option.uk' | t: default: 'UK' }}
+            </th>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6 tw:bg-lightstroke">3</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6">3.5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6 tw:bg-lightstroke">4</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-6">4.5</td>
+          </tr>
+
+          <tr>
+            <th scope="row" class="tw:px-2 tw:pt-2 tw:pb-2 tw:font-normal">
+              {{ 'main-product-section.size-option.eu' | t: default: 'EU' }}
+            </th>
+            <td class="tw:px-2 tw:pt-2 tw:pb-2 tw:bg-lightstroke">35.5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-2">36</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-2 tw:bg-lightstroke">36.5</td>
+            <td class="tw:px-2 tw:pt-2 tw:pb-2">37.5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</size-popup>

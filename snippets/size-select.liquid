@@ -32,7 +32,7 @@
 
       <button
         type="button"
-        class="tw:text-base tw:text-dark tw:underline tw:cursor-pointer"
+        class="size-guide-button tw:text-base tw:text-dark tw:underline tw:cursor-pointer"
         aria-haspopup="dialog"
         aria-controls="size-guide-dialog"
         data-variant="{{variant}}"
@@ -70,4 +70,4 @@
   {%- endif -%}
 </size-select>
 
-<script>console.log({{ product.variants | json }})</script>
+{% render 'size-popup' %}

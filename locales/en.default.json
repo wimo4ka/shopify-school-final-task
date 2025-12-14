@@ -4,6 +4,9 @@
     "not_found": "Page not found.",
     "back_to_shopping": "Back to shopping"
   },
+  "accessibility":{
+    "close_dialog": "Close size guide"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",
@@ -84,7 +87,11 @@
     "size-option": {
       "one_size": "ONE SIZE",
       "select_size": "Select Size",
-      "size_guide": "Size Guide"
+      "size_guide": "Size Guide",
+      "men": "US – Men's",
+      "women": "US – Women's",
+      "uk": "UK",
+      "eu": "EU"
     }
   }
 }
