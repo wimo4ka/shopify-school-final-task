@@ -104,6 +104,39 @@
     },
   },
   "sections": {
+    "accordion": {
+      "name": "Desctiption/Delivery/Return",
+      "blocks": {
+        "size-and-fit": {
+          "name": "SIZE & FIT",
+          "settings": {
+            "sizeAndFit": {
+              "default": "SIZE & FIT",
+              "label": "Title"
+            }
+          }
+        },
+        "product-notes": {
+          "name": "PRODUCT NOTES",
+          "settings": {
+            "productNotes": {
+              "default": "PRODUCT NOTES",
+              "label": "Title"
+            }
+          }
+        },
+        "returns-policy": {
+          "name": "DELIVERY & RETURNS",
+          "settings": {
+            "returnsPolicy": {
+              "default": "DELIVERY & RETURNS",
+              "label": "Title"
+            }
+          }
+        }
+      },
+      "presets": "Desctiption/Delivery/Return section"
+    },
     "main-product-section": {
       "name": "Main product",
       "blocks": {
@@ -174,7 +207,8 @@
             }
           }
         }
-      }
+      },
+      "presets": "Main product section"
     }
   }
 }
