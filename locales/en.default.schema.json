@@ -140,6 +140,9 @@
         },
         "size-option": {
           "name": "Size",
+        },
+        "buy_button": {
+          "name": "Buy button",
         }
       }
     }

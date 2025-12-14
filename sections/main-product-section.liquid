@@ -63,6 +63,12 @@
           >
             {%- render 'size-select', product: product -%}
           </div>
+        {% when 'buy_button' %}
+          <div
+            class="tw:block tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-0"
+          >
+            {%- render 'product-form', product: product -%}
+          </div>
       {% endcase %}
     {% endfor %}
     <script src="{{ 'product-gallery-swiper.js' | asset_url }}" defer></script>
@@ -160,6 +166,11 @@
     {
       "type": "size-option",
       "name": "t:sections.main-product-section.blocks.size-option.name",
+      "limit": 1
+    },
+    {
+      "type": "buy_button",
+      "name": "t:sections.main-product-section.blocks.buy_button.name",
       "limit": 1
     }
   ],

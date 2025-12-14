@@ -23,6 +23,10 @@
     "remove": "Remove",
     "open_cart": "Open cart"
   },
+  "cart_button": {
+    "sold_out": "Sold out",
+    "add_to_cart": "Add to cart",
+  },
   "customers": {
     "login": {
       "email": "Email",

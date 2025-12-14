@@ -44,6 +44,10 @@
         "size-option": {
           "type": "size-option",
           "settings": {}
+        },
+        "buy_button": {
+          "type": "buy_button",
+          "settings": {}
         }
       },
       "block_order": [
@@ -54,7 +58,8 @@
         "product-decription",
         "product-price",
         "color-picker",
-        "size-option"
+        "size-option",
+        "buy_button"
       ],
     }
   },
