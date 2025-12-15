@@ -5,7 +5,7 @@ class SizePopup extends HTMLElement {
 
   connectedCallback() {
     this.openButton = document.querySelector(".size-guide-button");
-    this.closeButton = this.querySelector("[data-close]");
+    this.closeButton = this.querySelector(".close-button");
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
 
