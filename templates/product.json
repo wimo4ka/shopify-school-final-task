@@ -10,11 +10,107 @@
 {
   "sections": {
     "main": {
-      "type": "product",
-      "settings": {}
+      "type": "main-product-section",
+      "settings": {},
+      "blocks": {
+        "product_link": {
+          "type": "product-link",
+          "settings": {}
+        },
+        "product-gallery": {
+          "type": "product-gallery",
+          "settings": {}
+        },
+        "product-title": {
+          "type": "product-title",
+          "settings": {}
+        },
+        "star-rating": {
+          "type": "star-rating",
+          "settings": {}
+        },
+        "product-decription": {
+          "type": "product-decription",
+          "settings": {}
+        },
+        "product-price": {
+          "type": "product-price",
+          "settings": {}
+        },
+        "color-picker": {
+          "type": "color-picker",
+          "settings": {}
+        },
+        "size-option": {
+          "type": "size-option",
+          "settings": {}
+        },
+        "buy_button": {
+          "type": "buy_button",
+          "settings": {}
+        },
+        "checkout_details": {
+          "type": "checkout_details",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "product_link",
+        "product-gallery",
+        "product-title",
+        "star-rating",
+        "product-decription",
+        "product-price",
+        "color-picker",
+        "size-option",
+        "buy_button",
+        "checkout_details"
+      ],
+    },
+    "accordion": {
+      "type": "accordion",
+      "settings": {},
+      "blocks": {
+        "size-and-fit": {
+          "type": "size-and-fit",
+          "settings": {}
+        },
+        "product-notes": {
+          "type": "product-notes",
+          "settings": {}
+        },
+        "returns-policy": {
+          "type": "returns-policy",
+          "settings": {}
+        },
+      },
+      "block_order": [
+        "size-and-fit",
+        "product-notes",
+        "returns-policy"
+      ]
+    },
+    "recommendation-carousel": {
+      "type": "recommendation-carousel",
+      "settings": {},
+    },
+    "reviews-section": {
+      "type": "reviews-section",
+      "settings": {},
+    },
+    "hero-section": {
+      "type": "hero-section",
+      "settings": {
+        "hero_desktop": "shopify://shop_images/hero-image-desktop.webp",
+        "hero_mobile": "shopify://shop_images/hero-image-mobile.webp",
+      },
     }
   },
   "order": [
-    "main"
+    "main",
+    "accordion",
+    "recommendation-carousel",
+    "reviews-section",
+    "hero-section"
   ]
 }

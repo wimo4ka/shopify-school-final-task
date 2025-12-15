@@ -1,0 +1,37 @@
+{% comment %}
+  snippets/product-price.liquid
+  Usage:
+  {% render 'product-price', product: product, show-bages: true %}
+{% endcomment %}
+
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+-%}
+<div class="price tw:text-base">
+    {%- if compare_at_price !=blank and compare_at_price > price -%}
+        <span class="tw:text-gray tw:line-through tw:mr-1">
+            {{- compare_at_price | money -}}
+        </span>
+    {%- endif -%}
+    <span class="tw:text-dark tw:mr-1">{{ price | money}}</span>
+    {%- if show_badges -%}
+        {%- if compare_at_price !=blank and compare_at_price > price and available -%}
+            <span class="tw:text-dark tw:inline-block tw:bg-lightgray tw:rounded-2xl tw:p-1 tw:text-xs">
+                {{- 'main-product-section.price.on_sale' | t -}}
+            </span>
+        {% endif %}
+        {%- if available == false -%}
+            <span class="tw:text-white tw:inline-block tw:bg-black tw:rounded-2xl tw:p-1 tw:text-xs">
+                {{- 'main-product-section.price.sold_out' | t -}}
+            </span>
+        {%- endif -%}
+    {% endif %}
+</div>

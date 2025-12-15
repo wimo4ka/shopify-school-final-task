@@ -1,0 +1,117 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.66 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.66 | round: 0 }}px;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<section
+  class="delivery-and-returns section-{{ section.id }} section-{{ section.id }}-padding tw:w-full"
+  data-section-id="{{ section.id }}"
+>
+  <div class="container">
+    <div class="tw:m-auto tw:max-w-146 tw:mt-6 tw:lg:mr-0 tw:lg:mb-0 tw:lg:ml-auto tw:lg:max-w-137">
+        {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'size-and-fit' %}
+                {%- if product.metafields.custom.size_fit != blank -%}
+                    {% render 'accordion-item', product: product, summary: block.settings.sizeAndFit, details: product.metafields.custom.size_fit.value, type: 'list' %}
+                {%- endif -%}
+            {% when 'product-notes' %}
+                {%- if product.metafields.custom.product_notes != blank -%}
+                    {% render 'accordion-item', product: product, summary: block.settings.productNotes, details: product.metafields.custom.product_notes.value, type: 'text' %}
+                {%- endif -%}
+            {% when 'returns-policy' %}
+                {%- if product.metafields.custom.returns_policy != blank -%}
+                    {% render 'accordion-item', product: product, summary: block.settings.returnsPolicy, details: product.metafields.custom.returns_policy.value, type: 'text' %}
+                {%- endif -%}
+        {% endcase %}
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Accordion",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "size-and-fit",
+      "name": "t:sections.accordion.blocks.size-and-fit.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "sizeAndFit",
+          "default": "t:sections.accordion.blocks.size-and-fit.settings.sizeAndFit.default",
+          "label": "t:sections.accordion.blocks.size-and-fit.settings.sizeAndFit.label"
+        }
+      ]
+    },
+    {
+      "type": "product-notes",
+      "name": "t:sections.accordion.blocks.product-notes.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "productNotes",
+          "default": "t:sections.accordion.blocks.product-notes.settings.productNotes.default",
+          "label": "t:sections.accordion.blocks.product-notes.settings.productNotes.label"
+        }
+      ]
+    },
+    {
+      "type": "returns-policy",
+      "name": "t:sections.accordion.blocks.returns-policy.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "returnsPolicy",
+          "default": "t:sections.accordion.blocks.returns-policy.settings.returnsPolicy.default",
+          "label": "t:sections.accordion.blocks.returns-policy.settings.returnsPolicy.label"
+        }
+      ]
+    }
+  ],
+   "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:general.padding.padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:general.padding.padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.accordion.presets"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+{%- comment -%}
+  snippets/nav-main.liquid
+  Usage:
+    {%- render 'nav-main' -%}
+{%- endcomment -%}
+
+<script src="{{ 'burger-menu.js' | asset_url }}" defer></script>
+
+
+<nav
+  class="navbar tw:relative"
+  aria-label="{{ 'header.main_navigation' | t | default: 'Main navigation' }}"
+>
+  <burger-menu class="tw:w-full tw:flex tw:items-center tw:justify-end md:tw:justify-start">
+
+    <!-- Burger button -->
+    <button
+      class="burger-btn tw:md:hidden tw:flex tw:flex-col tw:justify-between tw:w-6 tw:h-5 tw:cursor-pointer tw:relative tw:z-50"
+      aria-label="{{ 'header.open_menu' | t | default: 'Open menu' }}"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      type="button"
+    >
+      <span class="tw:block tw:h-[2px] tw:w-full tw:bg-dark tw:rounded"></span>
+      <span class="tw:block tw:h-[2px] tw:w-full tw:bg-dark tw:rounded"></span>
+      <span class="tw:block tw:h-[2px] tw:w-full tw:bg-dark tw:rounded"></span>
+    </button>
+
+    <!-- Menu -->
+    <ul
+      id="mobile-menu"
+      class="
+        navbar__list
+        tw:hidden
+        tw:fixed
+        tw:top-0
+        tw:left-0
+        tw:right-0
+        tw:bottom-0
+        tw:w-full
+        tw:bg-white
+        tw:shadow-md
+        tw:py-6
+        tw:px-4
+        tw:flex-col
+        tw:items-start
+        tw:gap-6
+        tw:text-base
+        tw:text-dark
+        tw:md:static
+        tw:md:flex
+        tw:md:flex-row
+        tw:md:bg-transparent
+        tw:md:shadow-none
+        tw:md:p-0
+        tw:md:items-center
+        tw:md:gap-8
+      "
+    >
+      {%- for link in linklists['main-menu'].links -%}
+        <li>
+          <a
+            href="{{ link.url }}"
+            class="nav-link tw:block tw:w-full tw:py-2 tw:font-medium tw:hover:text-gray-500"
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+  </burger-menu>
+</nav>

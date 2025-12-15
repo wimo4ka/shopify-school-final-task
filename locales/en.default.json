@@ -4,6 +4,11 @@
     "not_found": "Page not found.",
     "back_to_shopping": "Back to shopping"
   },
+  "accessibility":{
+    "close_dialog": "Close size guide",
+    "view_product": "View product",
+    "footer_nav": "Footer navigation"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",
@@ -17,7 +22,12 @@
     "checkout": "Checkout",
     "title": "Cart",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "open_cart": "Open cart"
+  },
+  "cart_button": {
+    "sold_out": "Sold out",
+    "add_to_cart": "Add to cart",
   },
   "customers": {
     "login": {
@@ -30,6 +40,21 @@
   "collections": {
     "title": "Collections"
   },
+  "footer": {
+    "login": "Login",
+    "search": "Search",
+    "copyright": "2025 Nike, Inc. All rights reserved",
+    "useful_links": "Useful links",
+    "shop_all": "Shop All",
+    "terms": "Terms",
+    "privacy": "Privacy Policy",
+    "icon": "Icon",
+    "lorem": "Lorem ipsum",
+    "resources": "Resources",
+    "help": "Help",
+    "company": "Company",
+    "menu": "Menu"
+  },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
     "card": "Gift card",
@@ -37,10 +62,19 @@
     "expires_on": "Expires on {{ expires_on }}",
     "use_at_checkout": "Use this gift card at checkout"
   },
+  "header": {
+    "site_header": "Website header",
+    "main_navigation": "Main navigation",
+    "open_menu": "Open menu"
+  },
   "password": {
     "title": "This shop is private",
     "password": "Password",
     "enter": "Enter"
+  },
+  "reviews": {
+    "no_reviews": "There is no reviews on this product...",
+    "avatar": "avatar"
   },
   "search": {
     "title": "Search",
@@ -48,5 +82,26 @@
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
+  },
+  "main-product-section":{
+    "bage":{
+      "high_rating": "Highly Rated"
+    },
+    "price": {
+      "sold_out": "Sold out",
+      "on_sale": "On Sale"
+    },
+    "color-picker": {
+      "one_color": "ONE COLOR"
+    },
+    "size-option": {
+      "one_size": "ONE SIZE",
+      "select_size": "Select Size",
+      "size_guide": "Size Guide",
+      "men": "US – Men's",
+      "women": "US – Women's",
+      "uk": "UK",
+      "eu": "EU"
+    }
   }
 }

@@ -17,8 +17,38 @@
     "footer": "Footer",
     "group": "Group",
     "header": "Header",
-    "layout": "Layout",
+    "layout": {
+      "name": "Layout",
+      "settings": {
+        "page_width": {
+          "label": "Page width"
+        },
+        "spacing_sections": {
+          "label": "Space between template sections"
+        },
+      }
+    },
+    "logo": {
+      "name": "Logo",
+      "settings": {
+        "logo_image": {
+          "label": "Logo"
+        },
+        "logo_width": {
+          "label": "Width"
+        },
+        "favicon": {
+          "label": "Favicon",
+          "info": "Displayed at 32 x 32px"
+        }
+      }
+    },
     "main": "Main",
+    "padding": {
+        "section_padding_heading": "Padding",
+        "padding_top": "Top",
+        "padding_bottom": "Bottom"
+      },
     "page": "Page",
     "password": "Password",
     "primary": "Primary",
@@ -72,5 +102,166 @@
       "subtitle": "Subtitle",
       "normal": "Normal text"
     },
+  },
+  "sections": {
+    "accordion": {
+      "name": "Desctiption/Delivery/Return",
+      "blocks": {
+        "size-and-fit": {
+          "name": "SIZE & FIT",
+          "settings": {
+            "sizeAndFit": {
+              "default": "SIZE & FIT",
+              "label": "Title"
+            }
+          }
+        },
+        "product-notes": {
+          "name": "PRODUCT NOTES",
+          "settings": {
+            "productNotes": {
+              "default": "PRODUCT NOTES",
+              "label": "Title"
+            }
+          }
+        },
+        "returns-policy": {
+          "name": "DELIVERY & RETURNS",
+          "settings": {
+            "returnsPolicy": {
+              "default": "DELIVERY & RETURNS",
+              "label": "Title"
+            }
+          }
+        }
+      },
+      "presets": "Desctiption/Delivery/Return section"
+    },
+    "hero-section": {
+      "name": "Hero Banner",
+      "settings": {
+        "hero_desktop": {
+          "label": "Hero image (desktop)",
+        },
+        "hero_mobile": {
+          "label": "Hero image (mobile)",
+        },
+        "heading": {
+          "label": "Hero Heading",
+          "default": "Step Into Next-Level Comfort"
+        },
+        "subheading": {
+          "label": "Hero Subheading",
+          "default": "Experience the perfect mix of style, support, and all-day cushioning with Nike Air Max Plus."
+        },
+        "cta_label": {
+          "label": "Button label",
+          "default": "Shop Now"
+        },
+        "cta_link": {
+          "label": "Button link",
+        }
+      },
+      "presets": "Hero Banner"
+    },
+    "main-product-section": {
+      "name": "Main product",
+      "blocks": {
+        "product-link": {
+          "name": "Product link"
+        },
+        "product-gallery": {
+          "name": "Product gallery",
+          "settings": {
+            "min_high_raiting": {
+              "label": "Minimum level rating to show bage"
+            }
+          }
+        },
+        "product-title": {
+          "name": "Product title"
+        },
+        "star-rating": {
+          "name": "Star rating"
+        },
+        "product-decription": {
+          "name": "Product decription"
+        },
+        "product-price": {
+          "name": "Product price",
+          "settings": {
+            "show_bages": {
+              "label": "Show price bages"
+            }
+          }
+        },
+        "color-picker": {
+          "name": "Product colors",
+        },
+        "size-option": {
+          "name": "Size",
+        },
+        "buy_button": {
+          "name": "Buy button",
+        },
+        "checkout_details": {
+          "name": "Checkout details",
+          "settings": {
+            "iconShipping": {
+              "label": "Shipping Icon"
+            },
+            "shipping": {
+              "default": "Free U.S. Shipping Over $150",
+              "label": "Free Shipping"
+            },
+            "iconCheckout": {
+              "label": "Checkout Icon"
+            },
+            "checkout": {
+              "default": "Safe & Secure Checkout",
+              "label": "Checkout"
+            },
+            "iconAfterpay": {
+              "label": "Afterpay Icon"
+            },
+            "afterpay": {
+              "default": "Afterpay available at checkout",
+              "label": "Afterpay"
+            },
+            "description": {
+              "default": "Let your attitude have the edge in your Nike Air Max Plus, a Tuned Air experience that offers premium stability and unbelievable cushioning",
+              "label": "Decription"
+            }
+          }
+        }
+      },
+      "presets": "Main product section"
+    },
+    "recommendations-carousel": {
+      "name": "Recommended products",
+      "settings": {
+        "heading": {
+          "label": "Section heading",
+          "default": "You may also like"
+        },
+        "products_to_show": {
+          "label": "Products to show"
+        }
+      },
+      "presets": "Recommended products"
+    },
+    "reviews": {
+      "name": "Product reviews",
+      "settings": {
+        "heading": {
+          "label": "Section heading",
+          "default": "Reviews"
+        },
+        "reviews_to_show": {
+          "label": "Reviews to show"
+        }
+      },
+      "presets": "Product reviews"
+    }
   }
 }

@@ -1,0 +1,3 @@
+[environments.development]
+
+store = "https://final-task-2.myshopify.com/"

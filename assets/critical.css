@@ -3,7 +3,6 @@
 /* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
 * {
   box-sizing: border-box;
-  margin: 0;
 }
 
 body {
@@ -17,13 +16,17 @@ html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {
   overflow: hidden;
 }
 
-img,
 picture,
 video,
 canvas,
 svg {
   display: block;
   max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
   height: auto;
 }
 
@@ -61,15 +64,7 @@ p:empty {
   display: none;
 }
 
-:is(p, h1, h2, h3, h4, h5, h6):first-child,
-:empty:first-child + :where(p, h1, h2, h3, h4, h5, h6) {
-  margin-block-start: 0;
-}
 
-:is(p, h1, h2, h3, h4, h5, h6):last-child,
-:where(p, h1, h2, h3, h4, h5, h6) + :has(+ :empty:last-child) {
-  margin-block-end: 0;
-}
 
 /** Theme styles below */
 body {
@@ -92,26 +87,17 @@ body {
  * the entire viewport.
  */
 .shopify-section {
-  --content-width: min(
-    calc(var(--page-width) - var(--page-margin) * 2),
-    calc(100% - var(--page-margin) * 2)
-  );
-  --content-margin: minmax(var(--page-margin), 1fr);
-  --content-grid: var(--content-margin) var(--content-width) var(--content-margin);
-
-  /* This is required to make <img> elements work as background images */
-  position: relative;
-  grid-template-columns: var(--content-grid);
-  display: grid;
   width: 100%;
 }
 
-/* Child elements, by default, are constrained to the central column of the grid. */
-.shopify-section > * {
-  grid-column: 2;
+.container {
+  max-width: var(--page-width);
+  margin: 0 auto;
 }
 
-/* Child elements that use the full-width utility class span the entire viewport. */
-.shopify-section > .full-width {
-  grid-column: 1 / -1;
+@media (max-width:1280px) { 
+  .container {
+    padding: 0 1.5rem;
+  }
 }
+

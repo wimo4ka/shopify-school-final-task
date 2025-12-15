@@ -1,0 +1,24 @@
+{%- comment -%}
+  snippets/accordion-item.liquid
+  Usage:
+    {% render 'accordion-item', product: product, summary: 'Title', details: 'metafild.value', type: 'list' | default: 'text' %}
+{%- endcomment -%}
+
+<details class="tw:group tw:w-full tw:p-4 tw:bg-white tw:rounded-lg tw:border tw:border-stroke tw:not-last-of-type:mb-2">
+    <summary class="tw:text-base tw:text-dark tw:pointer tw:flex tw:justify-between tw:items-center">
+        <p>{{ summary }}</p>
+        <div class="tw:w-4 tw:h-4 tw:block tw:group-open:hidden" >{{ 'icon-plus.svg' | inline_asset_content }}</div>
+        <div class="tw:w-4 tw:h-4 tw:hidden tw:group-open:block" >{{ 'icon-minus.svg' | inline_asset_content }}</div>
+    </summary>
+    {%- if type == 'list' -%}
+        <ul class="tw:text-gray tw:text-sm tw:mt-4 tw:list-disc tw:ml-5">
+            {%-for item in details-%}
+                <li class="tw:not-last-of-type:pb-2">{{- item -}}</li>
+            {%-  endfor -%}
+        </ul>
+    {%- else -%}
+        <p class="tw:text-gray tw:text-sm tw:mt-4">
+            {{- details -}}
+        </p>
+    {%- endif -%}
+</details>

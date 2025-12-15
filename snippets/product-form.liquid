@@ -1,0 +1,44 @@
+{%- form 'product',
+  product,
+  id: product_form_id,
+  class: 'form',
+  novalidate: 'novalidate',
+  data-type: 'add-to-cart-form'
+-%}
+  <input
+    type="hidden"
+    name="id"
+    value="{{ product.selected_or_first_available_variant.id }}"
+    {% if product.selected_or_first_available_variant.available == false
+      or product.selected_or_first_available_variant == null
+    %}
+      disabled
+    {% endif %}
+    class="product-variant-id"
+  >
+  <button
+    id="ProductSubmitButton-{{ section_id }}"
+    type="submit"
+    name="add"
+    class="product-form__submit tw:bg-dark tw:text-center tw:text-white tw:p-4 tw:w-full tw:cursor-pointer tw:rounded-xl {% if product.selected_or_first_available_variant.available == false
+      or quantity_rule_soldout
+      or product.selected_or_first_available_variant == null
+    %}
+       tw:opacity-50
+    {% endif %}"
+    {% if product.selected_or_first_available_variant.available == false
+      or quantity_rule_soldout
+      or product.selected_or_first_available_variant == null
+    %}
+      disabled
+    {% endif %}
+  >
+    <span>
+      {%- if product.selected_or_first_available_variant == null or product.selected_or_first_available_variant.available == false -%}
+        {{ 'cart_button.sold_out' | t }}
+      {%- else -%}
+        {{ 'cart_button.add_to_cart' | t }}
+      {%- endif -%}
+    </span>
+  </button>
+{%- endform -%}

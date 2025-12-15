@@ -1,45 +1,17 @@
-<h1 align="center" style="position: relative;">
-  <br>
-    <img src="./assets/shoppy-x-ray.svg" alt="logo" width="200">
-  <br>
-  Shopify Skeleton Theme
-</h1>
+# 🛍️ Product Details Page (PDP)
 
-A minimal, carefully structured Shopify theme designed to help you quickly get started. Designed with modularity, maintainability, and Shopify's best practices in mind.
-
-<p align="center">
-  <a href="./LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
-  <a href="./actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Shopify/skeleton-theme/actions/workflows/ci.yml/badge.svg"></a>
-</p>
-
-## Getting started
-
-### Prerequisites
-
-Before starting, ensure you have the latest Shopify CLI installed:
-
-- [Shopify CLI](https://shopify.dev/docs/api/shopify-cli) – helps you download, upload, preview themes, and streamline your workflows
-
-If you use VS Code:
-
-- [Shopify Liquid VS Code Extension](https://shopify.dev/docs/storefronts/themes/tools/shopify-liquid-vscode) – provides syntax highlighting, linting, inline documentation, and auto-completion specifically designed for Liquid templates
+A **Product Details Page (PDP)** was built based on the provided design.
 
 ### Clone
 
-Clone this repository using Git or Shopify CLI:
+🔗 **Repository:**  
+https://github.com/wimo4ka/shopify-school-final-task.git
 
-```bash
-git clone git@github.com:Shopify/skeleton-theme.git
-# or
-shopify theme init
-```
+The project is bundled with **Vite**.  
 
 ### Preview
-
-Preview this theme using Shopify CLI:
-
 ```bash
-shopify theme dev
+npm run dev
 ```
 
 ## Theme architecture
@@ -55,106 +27,124 @@ shopify theme dev
 ├── snippets        # Reusable Liquid code or HTML fragments
 └── templates       # Templates combining sections to define page structures
 ```
+## ✨ Implemented Features
+1. Header & Footer
 
-To learn more, refer to the [theme architecture documentation](https://shopify.dev/docs/storefronts/themes/architecture).
+The header and footer were reused from Lesson 5 homework: “Building Pages in Shopify”.
+The current implementation can be improved — details are listed in the Improvements section.
 
-### Templates
+2. Main Product Section
+  (main-product-section.liquid)
 
-[Templates](https://shopify.dev/docs/storefronts/themes/architecture/templates#template-types) control what's rendered on each type of page in a theme.
+The section is fully block-based, allowing flexible content management.
+Some logic was extracted into snippets to improve readability and maintainability.
 
-The Skeleton Theme scaffolds [JSON templates](https://shopify.dev/docs/storefronts/themes/architecture/templates/json-templates) to make it easy for merchants to customize their store.
+Implemented blocks:
 
-None of the template types are required, and not all of them are included in the Skeleton Theme. Refer to the [template types reference](https://shopify.dev/docs/storefronts/themes/architecture/templates#template-types) for a full list.
+- Product link
+  Extracted into a separate snippet.
+  The Home link is implemented via linklists['main-menu'].links.
 
-### Sections
+- Product gallery
+  Implemented using Swiper.js to display the main product image and navigate between images.
+  An option for a minimum product rating was added to display a “Highly rated” badge.
+  Later it was noted that this should be implemented via product tags — added to improvements.
 
-[Sections](https://shopify.dev/docs/storefronts/themes/architecture/sections) are Liquid files that allow you to create reusable modules of content that can be customized by merchants. They can also include blocks which allow merchants to add, remove, and reorder content within a section.
+- Product title
 
-Sections are made customizable by including a `{% schema %}` in the body. For more information, refer to the [section schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema).
+- Star rating
+  Implemented as a separate snippet.
+  Rating data is retrieved from product metafields.
 
-### Blocks
+- Product price
+  Implemented as a separate snippet.
+  If compare_at_price exists, it is displayed as crossed out.
+  Additional badges Sold Out and On Sale were added.
 
-[Blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) let developers create flexible layouts by breaking down sections into smaller, reusable pieces of Liquid. Each block has its own set of settings, and can be added, removed, and reordered within a section.
+- Color picker
+  Implemented as a separate snippet using the Section Rendering API.
+  Products are grouped using the metafield product.metafields.custom.group_key.
+  Each color swatch updates the section to display the selected product.
 
-Blocks are made customizable by including a `{% schema %}` in the body. For more information, refer to the [block schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks/schema).
+- Size option
+  Implemented as a component using the Section Rendering API.
+  The section updates when a variant is selected.
+  Styles are added for unavailable variants.
+  A Size popup is implemented as a separate component (planned to move to metafields).
 
-## Schemas
+- Buy button
+  Implemented as a separate snippet using the product form.
+  The button is disabled when the selected variant is unavailable.
 
-When developing components defined by schema settings, we recommend these guidelines to simplify your code:
+- Checkout details
+  Added editable texts and icons via section settings.
 
-- **Single property settings**: For settings that correspond to a single CSS property, use CSS variables:
+3. Accordion (Description / Shipping / Returns)
+  (accordion.liquid)
 
-  ```liquid
-  <div class="collection" style="--gap: {{ block.settings.gap }}px">
-    ...
-  </div>
+  Implemented using details / summary elements.
+  Content is loaded from product metafields:
 
-  {% stylesheet %}
-    .collection {
-      gap: var(--gap);
-    }
-  {% endstylesheet %}
+- product.metafields.custom.size_fit
+- product.metafields.custom.product_notes
+- product.metafields.custom.returns_policy
 
-  {% schema %}
-  {
-    "settings": [{
-      "type": "range",
-      "label": "gap",
-      "id": "gap",
-      "min": 0,
-      "max": 100,
-      "unit": "px",
-      "default": 0,
-    }]
-  }
-  {% endschema %}
-  ```
+  Each accordion item is rendered via a reusable accordion-item snippet.
+  Text content is fully editable by the merchant.
 
-- **Multiple property settings**: For settings that control multiple CSS properties, use CSS classes:
+4. Recommended Products
+  (recommendation-carousel.liquid)
 
-  ```liquid
-  <div class="collection {{ block.settings.layout }}">
-    ...
-  </div>
+  The “You may also like” section is implemented using the Search & Discovery app.
+  The section is rendered via a recommendations-carousel component.
 
-  {% stylesheet %}
-    .collection--full-width {
-      /* multiple styles */
-    }
-    .collection--narrow {
-      /* multiple styles */
-    }
-  {% endstylesheet %}
+  - A Swiper carousel appears if there are more than 4 products
+  - Product cards are implemented as a separate snippet
+  - Section settings allow changing the heading and product count
 
-  {% schema %}
-  {
-    "settings": [{
-      "type": "select",
-      "id": "layout",
-      "label": "layout",
-      "values": [
-        { "value": "collection--full-width", "label": "t:options.full" },
-        { "value": "collection--narrow", "label": "t:options.narrow" }
-      ]
-    }]
-  }
-  {% endschema %}
-  ```
+5. Reviews (Basic Version)
+  (reviews-section.liquid)
 
-## CSS & JavaScript
+  Reviews are loaded from the metaobject product.metafields.custom.reviews.
+  Each review card is rendered via a separate snippet.
 
-For CSS and JavaScript, we recommend using the [`{% stylesheet %}`](https://shopify.dev/docs/api/liquid/tags#stylesheet) and [`{% javascript %}`](https://shopify.dev/docs/api/liquid/tags/javascript) tags. They can be included multiple times, but the code will only appear once.
+  - Configurable maximum number of reviews (up to 5)
+  - The section is rendered only if reviews exist
 
-### `critical.css`
+6. Hero Banner with CTA
+  (hero-section.liquid)
 
-The Skeleton Theme explicitly separates essential CSS necessary for every page into a dedicated `critical.css` file.
+  A hero banner with:
 
-## Contributing
+  - Separate images for desktop and mobile
+  - Rich text content
+  - Configurable CTA button with link
 
-We're excited for your contributions to the Skeleton Theme! This repository aims to remain as lean, lightweight, and fundamental as possible, and we kindly ask your contributions to align with this intention.
+## 🛠️ Technologies Used
 
-Visit our [CONTRIBUTING.md](./CONTRIBUTING.md) for a detailed overview of our process, guidelines, and recommendations.
+  - Shopify
+  - Liquid
+  - JavaScript
+  - Tailwind CSS 4.0
+  - Swiper.js
+  - Vite
 
-## License
+## 🔧 Improvements (Planned)
 
-Skeleton Theme is open-sourced under the [MIT](./LICENSE.md) License.
+- Improve header burger menu
+- Footer: 
+    Refactor styles to Tailwind
+    Add text content according to the design
+- Main Product Section:
+    Replace rating-based badge logic with product tags
+- Size popup:
+  Implement via metafields
+
+## 🔗 Demo Store
+
+🌐 Store link:
+https://final-task-2.myshopify.com/?preview_theme_id=184002380141
+
+🔑 Password:
+pahgaw
+
