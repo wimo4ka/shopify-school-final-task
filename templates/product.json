@@ -97,12 +97,20 @@
     "reviews-section": {
       "type": "reviews-section",
       "settings": {},
+    },
+    "hero-section": {
+      "type": "hero-section",
+      "settings": {
+        "hero_desktop": "shopify://shop_images/hero-image-desktop.webp",
+        "hero_mobile": "shopify://shop_images/hero-image-mobile.webp",
+      },
     }
   },
   "order": [
     "main",
     "accordion",
     "recommendation-carousel",
-    "reviews-section"
+    "reviews-section",
+    "hero-section"
   ]
 }

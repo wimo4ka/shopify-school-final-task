@@ -137,6 +137,33 @@
       },
       "presets": "Desctiption/Delivery/Return section"
     },
+    "hero-section": {
+      "name": "Hero Banner",
+      "settings": {
+        "hero_desktop": {
+          "label": "Hero image (desktop)",
+        },
+        "hero_mobile": {
+          "label": "Hero image (mobile)",
+        },
+        "heading": {
+          "label": "Hero Heading",
+          "default": "Step Into Next-Level Comfort"
+        },
+        "subheading": {
+          "label": "Hero Subheading",
+          "default": "Experience the perfect mix of style, support, and all-day cushioning with Nike Air Max Plus."
+        },
+        "cta_label": {
+          "label": "Button label",
+          "default": "Shop Now"
+        },
+        "cta_link": {
+          "label": "Button link",
+        }
+      },
+      "presets": "Hero Banner"
+    },
     "main-product-section": {
       "name": "Main product",
       "blocks": {

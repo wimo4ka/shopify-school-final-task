@@ -93,6 +93,11 @@ body {
 .container {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+}
+
+@media (max-width:1024px) { 
+  .container {
+    padding: 0 1.5rem;
+  }
 }
 
