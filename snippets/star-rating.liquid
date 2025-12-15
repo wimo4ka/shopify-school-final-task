@@ -1,17 +1,16 @@
 {%- comment -%}
   snippets/star-rating.liquid
   Usage:
-    {%- render 'star-rating', product: product, -%}
+    {%- render 'star-rating', product: product, rating_object: product.metafields.custom.rating, show_rating_num: true -%}
 {%- endcomment -%}
 
-{%- assign rating_object = product.metafields.custom.rating -%}
 {%- assign rating_clean = rating_object.value | replace: ',', '.' | strip -%}
 {%- assign product_rating = rating_clean | plus: 0 | default: 3.0 -%}
 {%- assign rating_max_clean = product.metafields.custom.rating.scale_max | replace: ',', '.' | strip -%}
 {%- assign product_rating_max = rating_max_clean | plus: 0 | default: 5.0 -%}
 
 {%- if product_rating != blank -%}
-    <div class="tw:m-auto tw:max-w-146 tw:flex tw:items-center tw:gap-1 tw:mt-2 tw:lg:mb-0 tw:lg:ml-0 tw:lg:mr-0">
+    <div class="tw:flex tw:items-center tw:gap-1">
         <div>
             {% for i in (1..5) %}
             {% assign prev_i = i | minus: 1 %}
@@ -30,6 +29,8 @@
             {% endif %}
             {% endfor %}
         </div>
-        <div class="tw:text-dark tw:text-sm">{{ product_rating }}</div>
+        {%- if show_rating_num == true -%}
+            <div class="tw:text-dark tw:text-sm">{{ product_rating }}</div>
+        {%-  endif -%}
     </div>
 {%- endif -%}

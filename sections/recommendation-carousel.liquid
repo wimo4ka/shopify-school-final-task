@@ -1,7 +1,3 @@
-{% comment %} Section: recommendations carousel{% endcomment %}
-
-<script src="{{ 'recommendations-carousel.js' | asset_url }}" defer></script>
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -36,7 +32,7 @@
             id="recommendations-heading-{{ section.id }}"
             class="tw:text-dark tw:text-2xl tw:text-center tw:mb-8 tw:lg:text-3xl tw:lg:mb-12"
           >
-            {{- section.settings.heading -}}
+            {{- section.settings.heading | escape | default: 'You may also like' -}}
           </h2>
         {% endif %}
         <div
@@ -66,6 +62,11 @@
 {% schema %}
 {
   "name": "Recommendations Carousel",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
     {
       "type": "text",
@@ -114,4 +115,3 @@
 }
 {% endschema %}
 
-<script></script>

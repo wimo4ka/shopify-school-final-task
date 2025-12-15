@@ -222,6 +222,19 @@
         }
       },
       "presets": "Recommended products"
+    },
+    "reviews": {
+      "name": "Product reviews",
+      "settings": {
+        "heading": {
+          "label": "Section heading",
+          "default": "Reviews"
+        },
+        "reviews_to_show": {
+          "label": "Reviews to show"
+        }
+      },
+      "presets": "Product reviews"
     }
   }
 }

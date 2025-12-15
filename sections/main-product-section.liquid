@@ -38,7 +38,9 @@
             </div>
           {% endif %}
         {% when 'star-rating' %}
-          {% render 'star-rating', product: product %}
+          <div class="tw:m-auto tw:max-w-146 tw:mt-2 tw:lg:mb-0 tw:lg:ml-0 tw:lg:mr-0">
+            {% render 'star-rating', rating_object: product.metafields.custom.rating, show_rating_num: true %}
+          </div>
         {% when 'product-decription' %}
           {%- if product.description != blank -%}
             <div class="tw:m-auto tw:max-w-146 tw:lg:m-0">
@@ -88,7 +90,7 @@
               <p>{{ block.settings.shipping | escape }}</p>
             </div>
             <div class="tw:text-dark tw:text-sm tw:w-full tw:flex tw:gap-2 tw:mt-3">
-               {%- if block.settings.iconCheckout != blank -%}
+              {%- if block.settings.iconCheckout != blank -%}
                 {{
                   product.block.settings.iconCheckout
                   | image_url: width: 20
@@ -121,7 +123,7 @@
           </div>
       {% endcase %}
     {% endfor %}
-    
+
     <script src="{{ 'color-picker.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'size-select.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'size-popup.js' | asset_url }}" defer></script>
@@ -203,7 +205,7 @@
         {
           "type": "checkbox",
           "id": "show_bages",
-          "label": "t:sections.main-product-section.blocks.product-gallery.settings.show_bages.label",
+          "label": "t:sections.main-product-section.blocks.product-price.settings.show_bages.label",
           "default": true
         }
       ]

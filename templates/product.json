@@ -93,11 +93,16 @@
     "recommendation-carousel": {
       "type": "recommendation-carousel",
       "settings": {},
+    },
+    "reviews-section": {
+      "type": "reviews-section",
+      "settings": {},
     }
   },
   "order": [
     "main",
     "accordion",
-    "recommendation-carousel"
+    "recommendation-carousel",
+    "reviews-section"
   ]
 }
