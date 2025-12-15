@@ -6,7 +6,8 @@
   },
   "accessibility":{
     "close_dialog": "Close size guide",
-    "view_product": "View product"
+    "view_product": "View product",
+    "footer_nav": "Footer navigation"
   },
   "blog": {
     "article_comments": "Comments",
